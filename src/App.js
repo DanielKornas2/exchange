@@ -16,26 +16,39 @@ class App extends Component {
       .then((responseData)=> {
         this.setState({
           rates: responseData.rates,
+          chosenCurrency: null,
+          moneyAmmount: 0
         })
       });  
   }
 
-  handleClick = (key) => {
-    console.log(key)
+  handleCurrencyChoice = (key) => {
+    this.setState({
+      chosenCurrency: key.key,
+    })
+  }
+
+  handleMoneyAmmount = (e) => {
+    this.setState({
+      moneyAmount: e.target.value,
+    })
   }
 
 
   render() {
-    const rates = this.state.rates
-        
+    const {rates, chosenCurrency, moneyAmmount} = this.state;
+    console.log(rates[chosenCurrency])
+
     return (
       <div className="App container">
+        
         <ul>      
         {Object.keys(rates).map((key) => {
-          return <li key={key} onClick={() => this.handleClick({key})}>Key: {key}, Value: {rates[key]}</li>;
+          return <li key={key} onClick={() => this.handleCurrencyChoice({key})}>Key: {key}, Value: {rates[key]}</li>;
         })}
         </ul>
         <Button>Bootstrap button works fine</Button>
+        <input type="number" onChange={this.handleMoneyAmmount} /> euro is..
       </div>
     );
   }
