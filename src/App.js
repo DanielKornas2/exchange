@@ -6,7 +6,9 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      rates: ""
+      rates: "",
+      moneyAmount: 0,
+      chosenCurrency: "PLN",
     }
   }
 
@@ -15,9 +17,7 @@ class App extends Component {
       .then(response => response.json())
       .then((responseData)=> {
         this.setState({
-          rates: responseData.rates,
-          chosenCurrency: null,
-          moneyAmmount: 0
+          rates: responseData.rates,          
         })
       });  
   }
@@ -25,18 +25,25 @@ class App extends Component {
   handleCurrencyChoice = (key) => {
     this.setState({
       chosenCurrency: key.key,
+   })
+  }
+
+  handleMoneyAmount = (e) => {
+    this.setState({
+      moneyAmount: e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
     })
   }
 
-  handleMoneyAmmount = (e) => {
+  handleResetData = (e) => {
     this.setState({
-      moneyAmount: e.target.value,
+      moneyAmount: 0,
+      chosenCurrency: "PLN"
     })
   }
 
 
   render() {
-    const {rates, chosenCurrency, moneyAmmount} = this.state;
+    const {rates, chosenCurrency, moneyAmount} = this.state;
     console.log(rates[chosenCurrency])
 
     return (
@@ -47,8 +54,9 @@ class App extends Component {
           return <li key={key} onClick={() => this.handleCurrencyChoice({key})}>Key: {key}, Value: {rates[key]}</li>;
         })}
         </ul>
-        <Button>Bootstrap button works fine</Button>
-        <input type="number" onChange={this.handleMoneyAmmount} /> euro is..
+        <input type="number" onChange={this.handleMoneyAmount} value={moneyAmount} /> 
+        euro is {chosenCurrency? (rates[chosenCurrency] * moneyAmount) : null} {chosenCurrency}
+        <Button onClick={this.handleResetData}>Restore default</Button>
       </div>
     );
   }
