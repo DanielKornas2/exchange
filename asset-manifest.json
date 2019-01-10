@@ -1,15 +1,15 @@
 {
-  "main.css": "/shopping-list/static/css/main.3af34a8c.chunk.css",
-  "main.js": "/shopping-list/static/js/main.285e01ad.chunk.js",
-  "main.js.map": "/shopping-list/static/js/main.285e01ad.chunk.js.map",
-  "static/css/1.2b40e12b.chunk.css": "/shopping-list/static/css/1.2b40e12b.chunk.css",
-  "static/js/1.dd01588a.chunk.js": "/shopping-list/static/js/1.dd01588a.chunk.js",
-  "static/js/1.dd01588a.chunk.js.map": "/shopping-list/static/js/1.dd01588a.chunk.js.map",
-  "runtime~main.js": "/shopping-list/static/js/runtime~main.b61658b2.js",
-  "runtime~main.js.map": "/shopping-list/static/js/runtime~main.b61658b2.js.map",
-  "static/css/1.2b40e12b.chunk.css.map": "/shopping-list/static/css/1.2b40e12b.chunk.css.map",
-  "static/css/main.3af34a8c.chunk.css.map": "/shopping-list/static/css/main.3af34a8c.chunk.css.map",
-  "index.html": "/shopping-list/index.html",
-  "precache-manifest.02b66fc57c0c3ecd169180774962fd85.js": "/shopping-list/precache-manifest.02b66fc57c0c3ecd169180774962fd85.js",
-  "service-worker.js": "/shopping-list/service-worker.js"
+  "main.css": "/exchange/static/css/main.3af34a8c.chunk.css",
+  "main.js": "/exchange/static/js/main.24eb7265.chunk.js",
+  "main.js.map": "/exchange/static/js/main.24eb7265.chunk.js.map",
+  "static/css/1.2b40e12b.chunk.css": "/exchange/static/css/1.2b40e12b.chunk.css",
+  "static/js/1.dd01588a.chunk.js": "/exchange/static/js/1.dd01588a.chunk.js",
+  "static/js/1.dd01588a.chunk.js.map": "/exchange/static/js/1.dd01588a.chunk.js.map",
+  "runtime~main.js": "/exchange/static/js/runtime~main.0a4069e5.js",
+  "runtime~main.js.map": "/exchange/static/js/runtime~main.0a4069e5.js.map",
+  "static/css/1.2b40e12b.chunk.css.map": "/exchange/static/css/1.2b40e12b.chunk.css.map",
+  "static/css/main.3af34a8c.chunk.css.map": "/exchange/static/css/main.3af34a8c.chunk.css.map",
+  "index.html": "/exchange/index.html",
+  "precache-manifest.fe4a8a3fe50e485ac1512b5eeec7395d.js": "/exchange/precache-manifest.fe4a8a3fe50e485ac1512b5eeec7395d.js",
+  "service-worker.js": "/exchange/service-worker.js"
 }
