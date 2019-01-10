@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { InputGroup, InputGroupAddon, Input, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-
 class App extends Component {
   constructor(props){
     super(props);
