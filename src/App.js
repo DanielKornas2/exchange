@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Button } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
 
 class App extends Component {
   constructor(props){
@@ -9,6 +10,7 @@ class App extends Component {
       rates: "",
       moneyAmount: 0,
       chosenCurrency: "PLN",
+      dropdownOpen: false
     }
   }
 
@@ -29,8 +31,13 @@ class App extends Component {
   }
 
   handleMoneyAmount = (e) => {
+    if (e.target.value = e.target.value || 0){
+      this.setState({
+        moneyAmount: 0,
+      })
+    }
     this.setState({
-      moneyAmount: e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
+      moneyAmount: e.target.type === 'number' ? parseFloat(e.target.value) : e.target.value,
     })
   }
 
@@ -41,22 +48,40 @@ class App extends Component {
     })
   }
 
+  toggle = () => {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
+  }
+
 
   render() {
     const {rates, chosenCurrency, moneyAmount} = this.state;
-    console.log(rates[chosenCurrency])
 
     return (
-      <div className="App container">
-        
-        <ul>      
-        {Object.keys(rates).map((key) => {
-          return <li key={key} onClick={() => this.handleCurrencyChoice({key})}>Key: {key}, Value: {rates[key]}</li>;
-        })}
-        </ul>
-        <input type="number" onChange={this.handleMoneyAmount} value={moneyAmount} /> 
-        euro is {chosenCurrency? (rates[chosenCurrency] * moneyAmount) : null} {chosenCurrency}
-        <Button onClick={this.handleResetData}>Restore default</Button>
+      <div className="container">
+       <div className="row mt-3">
+        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} className="mx-auto">
+          <DropdownToggle caret>Choose currency</DropdownToggle>
+          <DropdownMenu>
+            {Object.keys(rates).map((key) => {
+              return <DropdownItem key={key} onClick={() => this.handleCurrencyChoice({key})}>{key}</DropdownItem>;
+            })}
+         </DropdownMenu>
+        </Dropdown>
+       </div>
+      <div className="row mt-3">
+        <div className="col-12 col-md-4 mx-auto">
+         <InputGroup>
+            <InputGroupAddon addonType="prepend">&euro;</InputGroupAddon>
+            <Input type="number" step="1" onChange={this.handleMoneyAmount} value={Number(moneyAmount).toString()} />
+         </InputGroup>
+          is {chosenCurrency? (rates[chosenCurrency] * moneyAmount) : null} <strong>{chosenCurrency}</strong>
+        </div>
+      </div>
+        <div className="row mt-3">
+        <Button onClick={this.handleResetData} className="mx-auto">Restore default</Button>
+        </div>
       </div>
     );
   }
